@@ -18,7 +18,20 @@ export default class App extends Component {
       textDecoration: "none"
     }
   }
-  
+
+  todoData = [
+    {
+      id: "1",
+      title: "공부하기",
+      completed: true
+    },
+    {
+      id: "2",
+      title: "청소하기",
+      completed: false
+    },
+  ]
+
   render() {
     return(
       <div className="container">
@@ -27,11 +40,13 @@ export default class App extends Component {
             <h1>할 일 목록</h1>
           </div>
           
-          <div style={this.getStyle()}>
+          {this.todoData.map(data => (
+            <div style={this.getStyle()} key={data.id}>
             <input type="checkbox" defaultChecked={false} />
-            공부하기
+            {data.title}
             <button style={this.btnStyle}>x</button>
           </div>
+          ))}
         </div>
       </div>
     )
